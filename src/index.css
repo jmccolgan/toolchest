@@ -1,0 +1,201 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  height: 100vh;
+  color:white;
+}
+
+.banner {
+  min-height: 5vh;
+  text-align: center;
+  background-color: rgba(255, 245, 238, 0.555);
+  color:grey;
+}
+.notfound {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 95vh; */
+}
+.overlay{
+  display: flex;
+  flex-direction: row;
+  background-color: teal;
+  min-height: 95vh;
+}
+
+.navbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  /* border:1px solid black; */
+  background-color: black;
+}
+
+.navbar ul a {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-decoration:none
+}
+
+a.active {
+  background-color: rgba(0, 0, 255, 0.233);
+}
+
+.dashboard {
+  display:flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  background-color: black;
+}
+
+.dashboard h1 {
+  font-size: 200px;
+  color: rgba(255, 245, 238, 0.555);
+}
+
+
+/* //////////////////CALCULATOR//////////////////////////////////// */
+.calculator {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  height:400px;
+  width: 300px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(191, 192, 177);
+}
+
+.calculatorInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+
+.calculatorValue button{
+  color:white;
+  background-color: black;
+  font-size: 50px;
+  border-radius:60px;
+  width: 12rem;
+  height: 4rem;
+  margin: 1px;
+  
+}
+
+.calculatorReset button{
+  color:white;
+  background-color: red;
+  font-size: 50px;
+  border-radius:60px;
+  width: 12rem;
+  height: 4rem;
+  margin: 1px;
+
+}
+
+
+.calculatorInput button {
+  background-color: gray;
+  margin: 1px;
+  font-size: 50px;
+  border-radius:60px;
+  height: 4rem;
+  width: 4rem;
+  
+}
+
+.calculatorOperations {
+  display:flex;
+  flex-direction: column;
+  
+}
+
+
+
+.calculatorOperations button {
+  background-color: orange;
+  margin: 1px;
+  font-size: 50px;
+  border-radius:60px;
+  height: 4rem;
+  width: 4rem;
+  align-items: flex-start;
+} 
+
+/* //////////////////Mileage//////////////////////////////////// */
+
+.mileage{
+  display: flex;
+  background-color: rgba(191, 192, 177);
+}
+
+.mileageTrips {
+min-width:250px;
+min-height:500px;
+margin-right:20px;
+border:1px solid black;
+border-radius: 10px;
+padding: 3px;
+background-color: rgba(43, 202, 109, 0.219);
+}
+.mileageDetails {
+  min-width:250px;
+  min-height:500px;
+  margin-left:20px;
+  border:1px solid black;
+  border-radius: 10px;
+  padding: 3px;
+  background-color: rgba(43, 202, 109, 0.219);
+}
+
+
+
+/* //////////////////Contacts//////////////////////////////////// */
+
+
+.contacts{
+  display: flex;
+  border: 1px solid black;
+  min-width: 700px;
+  min-height: 500px;
+  border-radius: 20px;
+  background-color: rgba(191, 192, 177);
+  border-color: white;
+  
+}
+
+.contactList{
+border-right: 1px solid black;
+min-height: 500px;
+min-width: 200px;
+background-color: rgba(0, 0, 0, 0.24);
+padding: 5px;
+border-radius:  20px  0  0 20px; 
+}
+.contactDetail{
+display:flex;
+flex-grow: 1;
+min-height: 500px;
+min-width: 200px;
+background-color: rgba(0, 0, 0, 0.24);
+padding: 5px;
+border-radius: 0 20px 20px 0 ;
+}
