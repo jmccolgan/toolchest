@@ -1,38 +1,77 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// const url = 'https://www.reddit.com/api/v1/authorize?client_id=KYyLRwJk0iXEBAk5Ef7vCQ&response_type=token&state=12345&redirect_uri=http://localhost:5173/news&scope=read'
-// const url1 ='http://google.com'
 
-// export const fetchToken = createAsyncThunk(
-//   'news/fetchToken',
-//   async () => {
-//     document.location = url;
-//     // window.open(url,"" , "width=500,height=500" );
+export const loadUserDetails = createAsyncThunk(
+  'news/loadUserDetails', 
+  async () => {
+    // console.log(`here!`)
+    let accessToken = await JSON.parse(sessionStorage.getItem("reddit_token")).accessToken
+    
+    // console.log(accessToken)
+    let UserDetailUrl = new URL("https://oauth.reddit.com/api/v1/me")
 
-//     alert(token)
+    const UserDetailResponse = await fetch(UserDetailUrl, {
+        method:"GET",
+        headers: {
+            Authorization: 'bearer ' + accessToken
+        },
+    });
 
-//     return token;
-//   }
-// )
 
+    const userDetail = await UserDetailResponse.json();
+    // console.log(UserDetailResponse)
+    // console.log(userDetail)
+
+    return userDetail
+
+  }
+)
 
 export const loadPreviews = createAsyncThunk(
     'news/loadPreviews',
-    async () => {
-        console.log('fetching')
-        const data = await fetch('http://localhost:5173/news.json')
-        const json = await data.json()
-        console.log(data)
-        console.log(json)
-        return json 
-    }
+    async () =>  {
+        // console.log(`here!`)
+    let accessToken = await JSON.parse(sessionStorage.getItem("reddit_token")).accessToken
+    
+    // console.log(accessToken)
+    let requestUrl = new URL('https://oauth.reddit.com/best/?show=all')
+    console.log(requestUrl)
+    const response = await fetch(requestUrl, {
+        method:"GET",
+        headers: {
+            Authorization: 'bearer ' + accessToken
+        },
+    });
+    console.log(response)
+    const json = await response.json();
+  
+    console.log(json)
+
+    return json
+
+  }
 );
+
+// export const loadPreviews = createAsyncThunk(
+//     'news/loadPreviews',
+//     async () => {
+//         // console.log('fetching')
+//         const data = await fetch('http://localhost:5173/news.json')
+//         const json = await data.json()
+//         console.log(data)
+//         console.log(json)
+//         return json 
+//     }
+// );
 
 export const newsSlice = createSlice({
     name:'news',
     initialState: {
         articles: {},
+        userInfo: {},
         isLoadingArticlePreviews: false,
-        hasError: false,
+        loadingArticlePreviewsError: false,
+        isLoadingUserInfo: false,
+        LoadingUserInfoError: false,
         token: 0,
     },
     reducers:{
@@ -45,18 +84,34 @@ export const newsSlice = createSlice({
         builder
           .addCase(loadPreviews.pending, (state) => {
             state.isLoadingArticlePreviews = true;
-            state.hasError = false;
+            state.loadingArticlePreviewsError = false;
           })
           .addCase(loadPreviews.fulfilled, (state, action) => {
             state.isLoadingArticlePreviews = false;
+            state.loadingArticlePreviewsError = false
             state.articles = action.payload;
           })
           .addCase(loadPreviews.rejected, (state, action) => {
             state.isLoadingArticlePreviews = false;
-            state.hasError = true;
+            state.loadingArticlePreviewsError = true;
+            console.log(action)
             state.articles = {};
           })
-      },
+          .addCase(loadUserDetails.pending, (state) => {
+            state.isLoadingUserInfo = true;
+            state.LoadingUserInfoError = false;
+          })
+          .addCase(loadUserDetails.fulfilled, (state, action) => {
+            state.isLoadingUserInfo = false;
+            state.LoadingUserInfoError = false;
+            state.userInfo = action.payload;
+          })
+          .addCase(loadUserDetails.rejected, (state, action) => {
+            state.isLoadingUserInfo = false;
+            state.LoadingUserInfoError = true;
+            state.userInfo = {};
+          })
+      }
 
 })
 

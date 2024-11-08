@@ -236,8 +236,8 @@ border-radius: 0 20px 20px 0 ;
 }
 
 .feelings button:hover{
-  transform: scale(2);
-  transition: all 1.2s ease-in-out .2s ;
+  transform: scale(1.2);
+  transition: all 1.2s ease-in-out .12s ;
 }
 
 .feelings h2{
@@ -310,6 +310,6 @@ background-color:hsla(234, 81%, 75%, 0.555);
 
 @keyframes bubbles{
 100%{
-  transform: scale(2)
+  transform: scale(1)
 }
 }
