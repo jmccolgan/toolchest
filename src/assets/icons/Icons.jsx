@@ -1,12 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { faCalculator } from '@fortawesome/free-solid-svg-icons'
-import { faGaugeMed } from '@fortawesome/free-solid-svg-icons'
-import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
-import { faAddressCard } from '@fortawesome/free-solid-svg-icons'
-import { faHome } from '@fortawesome/free-solid-svg-icons'
-import { faMusic } from '@fortawesome/free-solid-svg-icons'
-import { faFaceSadTear } from '@fortawesome/free-solid-svg-icons'
+
+import { faEnvelope,
+  faCalculator,
+  faGaugeMed,
+  faScrewdriverWrench,
+  faAddressCard,
+  faHome,
+  faMusic,
+  faFaceSadTear,
+  faBrain,
+  faNewspaper } from '@fortawesome/free-solid-svg-icons'
 
 export const icons = {
   envelope: <FontAwesomeIcon icon={faEnvelope} />,
@@ -17,6 +20,6 @@ export const icons = {
   home: <FontAwesomeIcon icon={faHome} />,
   music: <FontAwesomeIcon icon={faMusic} />,
   sadface: <FontAwesomeIcon icon={faFaceSadTear} />,
-
+  brain: <FontAwesomeIcon icon={faBrain} />,
+  newsPaper: <FontAwesomeIcon icon={faNewspaper} />
 }
-
